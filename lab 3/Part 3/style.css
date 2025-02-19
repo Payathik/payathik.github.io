@@ -51,9 +51,39 @@
     font-style: normal;
 }
 
+html {
+    font-size: 10px;
+}
 body {
     font-family: 'Lora';
+    font-size: 15px;
+    line-height: 1.5;
+    letter-spacing: normal;
+    word-spacing: normal;
 }
-h1, h2, h3, h4, h5, h6 {
+header {
     font-family: 'Lora';
+    letter-spacing: normal;
+}
+
+p:first-of-type {
+    text-indent: 20px;  
+}
+
+header{
+    font-size: 20px;
+    text-align: center;
+}
+
+a.link {
+    color:#a66
+}
+a.focus {
+    color:aqua
+}
+a:visited {
+    color:antiquewhite
+}
+a:hover {
+    color:aliceblue
 }
