@@ -75,15 +75,19 @@ header{
     text-align: center;
 }
 
+a{
+    color:#a66
+}
+
 a.link {
     color:#a66
 }
 a.focus {
-    color:aqua
+    color:rgb(139, 49, 0)
 }
 a:visited {
-    color:antiquewhite
+    color:rgb(255, 242, 129)
 }
 a:hover {
-    color:aliceblue
+    color:rgb(0, 136, 255)
 }
