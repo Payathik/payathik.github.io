@@ -45,8 +45,15 @@
   /* WRITE YOUR CODE BELOW HERE */
 
   @font-face {
-    font-family: 'Lora';  /* The name you'll use in your CSS */
+    font-family: 'Lora'; /* Body font */
     src: url('fonts/Lora.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat'; /* Heading font */
+    src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
     font-weight: normal;
     font-style: normal;
 }
@@ -55,15 +62,27 @@ html {
     font-size: 10px;
 }
 body {
-    font-family: 'Lora';
+    font-family: 'Lora', serif;
     font-size: 15px;
     line-height: 1.5;
     letter-spacing: normal;
     word-spacing: normal;
 }
-header {
-    font-family: 'Lora';
-    letter-spacing: normal;
+header, footer {
+    font-family: 'Lora', sans-serif;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+header h1 { 
+  font-size: 30px;
+}
+
+h2 {
+  font-family: 'Lora', sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
 }
 
 p:first-of-type {
@@ -77,12 +96,19 @@ header{
 
 a{
     color:#a66
+    
+}
+
+a.active {
+  border-radius: 5px;
+  color: rgb(256, 49, 0)
 }
 
 a.link {
     color:#a66
 }
 a.focus {
+  outline:none;
     color:rgb(139, 49, 0)
 }
 a:visited {
@@ -91,3 +117,35 @@ a:visited {
 a:hover {
     color:rgb(0, 136, 255)
 }
+
+a.focus, a.hover {
+  text-decoration: none;
+}
+
+a[href^="http"]:after{
+  content:" ";
+  display: inline;
+  margin-left: 5px;
+  font-size: 10px;
+  background-image:url(./external-link-52.png);
+  background-size: contain;
+  color:#a67
+}
+
+
+/* List */
+ul, ol {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding-left: 20px;
+}
+
+li { 
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+ul li, ol li {
+  font-size: 1.5rem
+}
+
