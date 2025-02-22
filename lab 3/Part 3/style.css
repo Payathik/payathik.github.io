@@ -26,6 +26,9 @@
     float: left;
     width: 20%;
   }
+  nav li {
+    list-style-type: none !important; /* bullet removal cause the ul bullet got added to the nav */
+  }
   
   footer {
     clear: both;
@@ -43,17 +46,18 @@
   }
   
   /* WRITE YOUR CODE BELOW HERE */
-
+/* Font for body */
   @font-face {
-    font-family: 'Lora'; /* Body font */
+    font-family: 'Lora'; 
     src: url('fonts/Lora.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
-
+/* Font for header */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 @font-face {
-    font-family: 'Montserrat'; /* Heading font */
     src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+    font-family: 'Montserrat'; 
     font-weight: normal;
     font-style: normal;
 }
@@ -100,8 +104,10 @@ a{
 }
 
 a.active {
-  border-radius: 5px;
-  color: rgb(256, 49, 0)
+  background: #a66;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
 }
 
 a.link {
@@ -149,3 +155,43 @@ ul li, ol li {
   font-size: 1.5rem
 }
 
+nav {
+  background-color: rgb(255, 255, 255);  /* Match header/footer color */
+  width: 20%;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  margin-bottom: 10px;
+}
+
+nav a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  background: #a66;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+nav a:hover {
+  background: rgb(255, 255, 255);
+  color: #a66;
+}
+/* Bullet points */
+ul {
+  list-style: none;
+}
+
+ul li {
+  padding-left: 20px;
+  list-style-type: square;
+  background-size: 12px;
+}
