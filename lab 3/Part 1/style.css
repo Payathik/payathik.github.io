@@ -4,20 +4,22 @@ body {
     margin: auto;
     padding:20px;
   }
-  
+  /* Level 1 header styling */
   h1 {
     color: hotpink;
     font-size: 2em;
     font-family: Georgia, "Times New Roman", Times, serif;
     border-bottom: 10px dotted purple;
   }
-  
+  /* Second level header styling */
   h2 {
     font-size: 1.5em;
     font-style: italic;
   }
   
-  .job-title {
+  .job-title { 
+
+    
     color: #999999;
     font-weight: bold;
   }
