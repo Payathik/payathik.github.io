@@ -9,15 +9,15 @@ function randomValueFromArray(array){
 }
 
 // 2. RAW TEXT STRINGS
-var storyText = "It was 94 fahrenheit outside, so "+ xItem +" went for a walk. When they got to" + yItem + ", they stared in horror for a few moments, then "+ zItem + "Bob saw the whole thing, but was not surprised — " + xItem + " weighs 300 pounds, and it was a hot day."
+var storyText = "It was 94 fahrenheit outside, so xItem went for a walk. When they got to yItem, they stared in horror for a few moments, then zItem Bob saw the whole thing, but was not surprised — xItem weighs 300 pounds, and it was a hot day."
 
-const insertx = ["Willy the Goblin, Big Daddy, Father Christmas"]
+const insertx = ["Willy the Goblin", "Big Daddy", "Father Christmas"];
 console.log(insertx)
 
-const inserty = ["the soup kitchen, Disneyland,the White House"]
+const inserty = ["the soup kitchen", "Disneyland","the White House"];
 console.log(inserty)
 
-const insertz = ["spontaneously combusted, melted into a puddle on the sidewalk, turned into a slug and crawled away"]
+const insertz = ["spontaneously combusted", "melted into a puddle on the sidewalk", "turned into a slug and crawled away"];
 console.log(insertz)    
 
 
@@ -39,8 +39,10 @@ randomize.addEventListener('click', result);
 
   story.textContent = newStory ;
   story.style.visibility = 'visible';
+
+  let newStory = storyText.replace('Bob', customName)
+  let xItem = randomValueFromArray(xItem)
+  let yItem = randomValueFromArray(yItem)
+  let zItem = randomValueFromArray(zItem)
+
 }
-let newStory = storyText.replace('Bob', customName)
-let xItem = randomValueFromArray()
-let yItem = randomValueFromArray()
-let zItem = randomValueFromArray()
