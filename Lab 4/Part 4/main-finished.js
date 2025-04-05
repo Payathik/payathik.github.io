@@ -18,7 +18,7 @@ function randomRGB() {
   return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
 }
 
-
+// shape class
 class Shape {
   constructor(x, y, velX, velY, color, size) {
     this.x = x;
@@ -27,7 +27,7 @@ class Shape {
     this.velY = velY;
 
   } }
-
+// ball class that extended from shape class
 class Ball extends Shape {
   constructor(x, y, velX, velY, color, size ,  exists) {
     super(x, y, velX, velY);
@@ -79,7 +79,7 @@ class Ball extends Shape {
     }
   }
 }
-
+// evil circle class
 class EvilCircle extends Shape {
   
   constructor(x, y) {
@@ -103,7 +103,16 @@ class EvilCircle extends Shape {
           break;
       }
     });
-    
+      // draw method
+    draw() {
+      ctx.beginPath();
+      ctx.strokeStyle = this.color;
+      ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.lineWidth = 3
+    }    
+
+
 const balls = [];
 
 while (balls.length < 25) {
