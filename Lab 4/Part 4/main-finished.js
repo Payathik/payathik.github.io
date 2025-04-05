@@ -5,7 +5,8 @@ const ctx = canvas.getContext("2d");
 
 const width = (canvas.width = window.innerWidth);
 const height = (canvas.height = window.innerHeight);
-
+const ballCount = document.querySelector("p");  
+let count = 25;  
 // function to generate random number
 
 function random(min, max) {
@@ -35,15 +36,14 @@ class Ball extends Shape {
     this.size = size;
     this.exists = true;
   }
-
-
+  // draw method
   draw() {
     ctx.beginPath();
     ctx.fillStyle = this.color;
     ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
     ctx.fill();
   }
-
+  // update method
   update() {
     if (this.x + this.size >= width) {
       this.velX = -Math.abs(this.velX);
@@ -64,7 +64,7 @@ class Ball extends Shape {
     this.x += this.velX;
     this.y += this.velY;
   }
-
+  // collisiondetect method
   collisionDetect() {
     for (const ball of balls) {
       if (!(this === ball) && ball.exists) {
@@ -78,31 +78,34 @@ class Ball extends Shape {
       }
     }
   }
-}
-// evil circle class
-class EvilCircle extends Shape {
   
-  constructor(x, y) {
-  super(x, y, 20, 20);   
-    this.color = "white";
-    this.size = 10;
-    
-    window.addEventListener("keydown", (e) => {
-      switch (e.key) {
-        case "a":
-          this.x -= this.velX;
-          break;
-        case "d":
-          this.x += this.velX;
-          break;
-        case "w":
-          this.y -= this.velY;
-          break;
-        case "s":
-          this.y += this.velY;
-          break;
-      }
-    });
+}
+updateBallCount();  // Initialize the display
+  // Evilcircle class
+class EvilCircle extends Shape{
+
+    constructor(x, y) {
+    super(x, y, 20, 20);   
+      this.color = "white";
+      this.size = 10;
+      
+      window.addEventListener("keydown", (e) => {
+        switch (e.key) {
+          case "a":
+            this.x -= this.velX;
+            break;
+          case "d":
+            this.x += this.velX;
+            break;
+          case "w":
+            this.y -= this.velY;
+            break;
+          case "s":
+            this.y += this.velY;
+            break;
+        }
+      }); 
+    }
       // draw method
     draw() {
       ctx.beginPath();
@@ -110,8 +113,8 @@ class EvilCircle extends Shape {
       ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
       ctx.stroke();
       ctx.lineWidth = 3
-    }    
-    // checkbound method
+    }
+  // checkbound method
     checkBounds() {
     
       if (this.x + this.size >= width) {
@@ -131,7 +134,7 @@ class EvilCircle extends Shape {
       }
     }
 
-    // Collisiondetect method 
+  // collision detect method
     collisionDetect() {
       for (const ball of balls) {
         if (ball.exists) {
@@ -147,11 +150,11 @@ class EvilCircle extends Shape {
         }
       }
     }
+    
+    
   }
 
-
 const balls = [];
-
 while (balls.length < 25) {
   const size = random(10, 20);
   const ball = new Ball(
@@ -167,28 +170,27 @@ while (balls.length < 25) {
 
   balls.push(ball);
 }
+
 function updateBallCount() {
   ballCount.textContent = `Balls count: ${count}`;
 }
-
-const evilCircle = new EvilCircle(random(0 + 12, width - 12), random(0 + 12, height - 12));
-
-
-function loop() {
-  ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
-  ctx.fillRect(0, 0, width, height);
-
-  for (const ball of balls) {
-    if (ball.exists) {
-      ball.draw();
-      ball.update();
-      ball.collisionDetect();
+  const evilCircle = new EvilCircle(random(0 + 12, width - 12), random(0 + 12, height - 12));
+  function loop() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
+    ctx.fillRect(0, 0, width, height);
+    for (const ball of balls) {
+      if (ball.exists) {
+        ball.draw();
+        ball.update();
+        ball.collisionDetect();
+      }
     }
-  }
-  evilCircle.draw();          // Draw the evil circle
-  evilCircle.checkBounds();   // Keep it within canvas bounds
-  evilCircle.collisionDetect(); // Check for collisions with balls
-  requestAnimationFrame(loop);  
-}
 
-loop();
+    evilCircle.draw();
+    evilCircle.checkBounds();
+    evilCircle.collisionDetect();
+  
+    requestAnimationFrame(loop);
+  }
+  
+  loop();
