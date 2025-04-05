@@ -148,7 +148,7 @@ class EvilCircle extends Shape {
       }
     }
   }
-}
+
 
 const balls = [];
 
@@ -167,18 +167,28 @@ while (balls.length < 25) {
 
   balls.push(ball);
 }
+function updateBallCount() {
+  ballCount.textContent = `Balls count: ${count}`;
+}
+
+const evilCircle = new EvilCircle(random(0 + 12, width - 12), random(0 + 12, height - 12));
+
 
 function loop() {
   ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
   ctx.fillRect(0, 0, width, height);
 
   for (const ball of balls) {
-    ball.draw();
-    ball.update();
-    ball.collisionDetect();
+    if (ball.exists) {
+      ball.draw();
+      ball.update();
+      ball.collisionDetect();
+    }
   }
-
-  requestAnimationFrame(loop);
+  evilCircle.draw();          // Draw the evil circle
+  evilCircle.checkBounds();   // Keep it within canvas bounds
+  evilCircle.collisionDetect(); // Check for collisions with balls
+  requestAnimationFrame(loop);  
 }
 
 loop();
